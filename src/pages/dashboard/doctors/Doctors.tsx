@@ -69,9 +69,9 @@ const DoctorPage = () => {
                     {
                         dashOverview?.map((dash, index) => (
                             <div key={index} className="relative flex flex-col justify-center overflow-hidden rounded-xl shadow-lg">
-                                <div className="group flex justify-between relative cursor-pointer overflow-hidden border rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300">
+                                <div className="group flex justify-between relative cursor-pointer overflow-hidden border rounded-xl bg-gradient-to-br from-primary to-secondary px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300">
                                     <span className="absolute top-10 right-6 z-0 h-20 w-20 rounded-full bg-primary transition-all duration-300 group-hover:scale-[12]" />
-                                    <div className='text-foreground relative z-20'>
+                                    <div className='text-white relative z-20'>
                                         <h1 className='font-bold text-5xl text-left drop-shadow-md'>{dash.count}</h1>
                                         <p className='font-bold text-xl drop-shadow-md'>{dash.title}</p>
                                     </div>

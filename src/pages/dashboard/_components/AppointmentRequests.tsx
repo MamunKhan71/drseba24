@@ -17,7 +17,7 @@ export default function AppointmentRequests() {
                                 </div>
                                 <div>
                                     <p className='font-bold text-foreground'>{patient.name}</p>
-                                    <button><Badge className={'text-foreground bg-secondary hover:bg-primary'}>View Details</Badge></button>
+                                    <button><Badge className={'text-white bg-secondary hover:bg-primary rounded-sm'}>View Details</Badge></button>
                                 </div>
                             </div>
                             <div className='flex gap-2 items-center'>

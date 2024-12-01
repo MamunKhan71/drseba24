@@ -201,7 +201,7 @@ const RegisterPage = () => {
 
     return (
 
-        <div className="min-h-screen p-6 flex items-center justify-center relative">
+        <div className="min-h-screen p-6 flex items-center justify-center relative overflow-hidden">
             <div className="container max-w-screen-lg mx-auto">
                 <div className='relative z-10'>
                     <Tabs defaultValue='personal' className="rounded backdrop-blur-lg">
@@ -221,21 +221,21 @@ const RegisterPage = () => {
                                 </div>
                                 <div className="lg:col-span-2">
                                     <TabsContent value='personal' className="w-full grid gap-4 text-sm grid-cols-1 md:grid-cols-5">
-                                            <div className='col-span-2'>
-                                                <Label htmlFor="firstName">First Name *</Label>
-                                                <Input id="firstName" {...register('firstName')} placeholder="John" />
-                                                {errors?.firstName && <p className='text-xs text-destructive mt-1'>{errors.firstName.message}</p>}
-                                            </div>
-                                            <div className='col-span-2'>
-                                                <Label htmlFor="lastName">Last Name *</Label>
-                                                <Input id="lastName" {...register('lastName')} placeholder="Doe" />
-                                                {errors?.lastName && <p className='text-xs text-destructive mt-1'>{errors.lastName.message}</p>}
-                                            </div>
-                                            <div>
-                                                <Label htmlFor="mobileNumber">Mobile Number *</Label>
-                                                <Input id="mobileNumber" {...register('mobileNumber')} type="tel" placeholder="Enter mobile number" />
-                                                {errors?.mobileNumber && <p className='text-xs text-destructive'>{errors.mobileNumber.message}</p>}
-                                            </div>
+                                        <div className='col-span-2'>
+                                            <Label htmlFor="firstName">First Name *</Label>
+                                            <Input id="firstName" {...register('firstName')} placeholder="John" />
+                                            {errors?.firstName && <p className='text-xs text-destructive mt-1'>{errors.firstName.message}</p>}
+                                        </div>
+                                        <div className='col-span-2'>
+                                            <Label htmlFor="lastName">Last Name *</Label>
+                                            <Input id="lastName" {...register('lastName')} placeholder="Doe" />
+                                            {errors?.lastName && <p className='text-xs text-destructive mt-1'>{errors.lastName.message}</p>}
+                                        </div>
+                                        <div>
+                                            <Label htmlFor="mobileNumber">Mobile Number *</Label>
+                                            <Input id="mobileNumber" {...register('mobileNumber')} type="tel" placeholder="Enter mobile number" />
+                                            {errors?.mobileNumber && <p className='text-xs text-destructive'>{errors.mobileNumber.message}</p>}
+                                        </div>
                                         <div className="md:col-span-3">
                                             <Label htmlFor="email">Email Address</Label>
                                             <Input
@@ -499,7 +499,7 @@ const RegisterPage = () => {
                                             </label>
                                         </div>
                                         <div className='mt-6'>
-                                            <Button className='w-full hover:bg-secondary'>Submit <ArrowRight /></Button>
+                                            <Link to={'/verify'}><Button className='w-full hover:bg-secondary'>Submit <ArrowRight /></Button></Link>
                                         </div>
                                     </TabsContent>
                                 </div>

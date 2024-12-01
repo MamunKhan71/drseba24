@@ -11,7 +11,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 // import { AnimatePresence, motion } from 'framer-motion';
-import { Archive, BadgePercent, BellIcon, BookmarkCheck, ChevronDown, ClipboardPlus, Edit, FileText, Headset, LayoutDashboard, Logs, LucideBriefcaseMedical, Moon, PlusCircle, Settings, User, UserCog, UserPen, UserRound, Users, Variable } from 'lucide-react';
+import { Archive, BadgePercent, BellIcon, BookmarkCheck, ChevronDown, ClipboardPlus, Edit, FileText, Headset, LayoutDashboard, LucideBriefcaseMedical, Moon, PlusCircle, Settings, User, UserCog, UserPen, UserRound, Users, Variable } from 'lucide-react';
 // import { signOut, useSession } from 'next-auth/react';
 // import Image from 'next/image';
 // import Link from 'next/link';
@@ -40,11 +40,16 @@ export default function MainLayout() {
     // const pathname = usePathname().split('/')
     // const pathnameText = pathname[pathname.length - 1].replace('-', " ").toUpperCase() || '/'
     // const { data } = useSession()
+    const userRole = 'doctor'
     const toggleDashboard = () => setIsDashboardOpen(!isDashboardOpen)
     const toggleProfile = () => setIsProfileOpen(!isProfileOpen)
     const [isDashboardOpen, setIsDashboardOpen] = useState<boolean>(true)
     const [isProfileOpen, setIsProfileOpen] = useState<boolean>(true)
-
+    const rolePermissions: Record<string, string[]> = {
+        doctor: ["Overview", "Patients", "Appointments", "Prescriptions", "My Profile"],
+        admin: ["Overview", "Patients", "Doctors", "Appointments", "Lab Tests", "Receptionist", "Add Medicine", "Prescriptions"],
+        // Add more roles and their permissions here
+    };
     const dashboardCategories: DashboardCategory[] = [
         { icon: LayoutDashboard, name: 'Overview', href: '/dashboard' },
         { icon: Users, name: 'Patients', href: '/dashboard/patients' },
@@ -55,13 +60,53 @@ export default function MainLayout() {
         { icon: PlusCircle, name: 'Add Medicine', href: '/dashboard/add-medicine' },
         { icon: ClipboardPlus, name: 'Prescriptions', href: '/dashboard/prescriptions' },
     ]
+    const generalRoutes = [
+        {
+            "name": "Invoices",
+            "href": "#",
+            "icon": FileText
+        },
+        {
+            "name": "Campaigns",
+            "href": "#",
+            "icon": BadgePercent
+        },
+        {
+            "name": "Services",
+            "href": "#",
+            "icon": Archive
+        },
+        {
+            "name": "Customer Support",
+            "href": "#",
+            "icon": Headset
+        },
+        {
+            "name": "Settings",
+            "href": "#",
+            "icon": Settings
+        }
+    ]
+    const filteredRoutes = generalRoutes.filter(routes => {
+        const eligibleRoutes = rolePermissions[userRole]
+        return eligibleRoutes.includes(routes.name)
+    })
 
+    const filteredDashboardCategories = dashboardCategories.filter(category => {
+        const eligibleCategories = rolePermissions[userRole]
+        return eligibleCategories?.includes(category.name)
+    })
     const dashboardProfile: DashboardProfile[] = [
         { icon: User, name: 'My Profile', href: '/dashboard/profile' },
         { icon: User, name: 'Doctor Profile', href: '/dashboard/doctors/profile' },
         { icon: Edit, name: 'Edit Profile', href: '/dashboard/edit-profile' },
         { icon: BookmarkCheck, name: 'My Bookings', href: '/dashboard/my-bookings' },
     ]
+
+    const filteredDashboardProfile = dashboardProfile.filter(profile => {
+        const eligibleProfile = rolePermissions[userRole]
+        return eligibleProfile.includes(profile.name)
+    })
 
     return (
         <div className='flex relative'>
@@ -91,7 +136,7 @@ export default function MainLayout() {
                             {isDashboardOpen && (
                                 <ul
                                     className='space-y-2 ml-4'>
-                                    {dashboardCategories.map((category, index) => (
+                                    {filteredDashboardCategories.map((category, index) => (
                                         <li key={index}>
                                             <Link
                                                 to={category.href}
@@ -126,7 +171,7 @@ export default function MainLayout() {
                             {isProfileOpen && (
                                 <ul
                                     className='space-y-2 ml-4 '>
-                                    {dashboardProfile.map((profile, index) => (
+                                    {filteredDashboardProfile.map((profile, index) => (
                                         <li key={index}>
                                             <Link
                                                 to={profile.href}
@@ -142,51 +187,19 @@ export default function MainLayout() {
                                 </ul>
                             )}
                         </div>
-                        <div className='space-y-3'>
-                            <Link
-                                to={"#"}
-                            >
-                                <Button variant="ghost" className="w-full justify-start hover:bg-gradient-to-br hover:bg-secondary text-white hover:text-white">
-                                    <FileText size={20} /> Invoices
-                                </Button>
-                            </Link>
-                        </div>
-                        <div className='space-y-3'>
-                            <Link
-                                to={"#"}
-                            >
-                                <Button variant="ghost" className="w-full justify-start hover:bg-gradient-to-br hover:bg-secondary text-white hover:text-white">
-                                    <BadgePercent size={20} /> Campaigns
-                                </Button>
-                            </Link>
-                        </div>
-                        <div className='space-y-3'>
-                            <Link
-                                to={"#"}
-                            >
-                                <Button variant="ghost" className="w-full justify-start hover:bg-gradient-to-br hover:bg-secondary text-white hover:text-white">
-                                    <Archive size={20} /> Services
-                                </Button>
-                            </Link>
-                        </div>
-                        <div className='space-y-3'>
-                            <Link
-                                to={"#"}
-                            >
-                                <Button variant="ghost" className="w-full justify-start hover:bg-gradient-to-br hover:bg-secondary text-white hover:text-white">
-                                    <Headset size={20} /> Customer Support
-                                </Button>
-                            </Link>
-                        </div>
-                        <div className='space-y-3'>
-                            <Link
-                                to={"#"}
-                            >
-                                <Button variant="ghost" className="w-full justify-start hover:bg-gradient-to-br hover:bg-secondary text-white hover:text-white">
-                                    <Settings size={20} /> Settings
-                                </Button>
-                            </Link>
-                        </div>
+                        {
+                            filteredRoutes?.map(routes => (
+                                <div className='space-y-3'>
+                                    <Link
+                                        to={routes.href}
+                                    >
+                                        <Button variant="ghost" className="w-full justify-start hover:bg-gradient-to-br hover:bg-secondary text-white hover:text-white">
+                                            <routes.icon size={20} /> {routes.name}
+                                        </Button>
+                                    </Link>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
@@ -195,11 +208,11 @@ export default function MainLayout() {
                     {/* <h1 className='inline-flex gap-2 items-center text-lg font-bold text-foreground'><Logs /> {pathnameText}</h1> */}
                     <div className='flex gap-4 items-center justify-end w-full'>
                         <div className='relative'>
-                            <BellIcon className="rounded-full size-12 bg-secondary  text-foreground p-3" />
+                            <BellIcon className="rounded-full size-12 bg-secondary text-white p-3" />
                             <span className='rounded-full bg-primary text-white p-1 font-medium text-xs absolute -top-1 -right-1'>2+</span>
                         </div>
                         <div>
-                            <Moon className="rounded-full size-12 bg-secondary   text-foreground p-3" />
+                            <Moon className="rounded-full size-12 bg-secondary text-white p-3" />
                         </div>
                         <div>
                             <DropdownMenu>
@@ -212,10 +225,10 @@ export default function MainLayout() {
                                                 <UserCog />
                                             </>
                                         } */}
-                                        <UserCog />
+                                        <UserCog className='text-white' />
                                     </DropdownMenuTrigger>
                                     <div>
-                                        <h1 className='pr-3 text-sm font-semibold text-foreground'>Hello, <span className='font-bold text-foreground'>
+                                        <h1 className='pr-3 text-sm font-semibold text-white'>Hello, <span className='font-bold text-white'>
                                             {/* {data?.user?.name as string} */}
                                             Mamun
                                         </span></h1>

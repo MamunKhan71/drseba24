@@ -59,7 +59,7 @@ export default function Dashboard() {
             <div className='space-y-4'>
                 {/* <NavigationTracker pathname={usePathname()} /> */}
                 <div className='space-y-4'>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                         {dashOverview.map((dash, index) => (
                             <DashboardCard key={index} {...dash} />
                         ))}
@@ -87,11 +87,11 @@ const dashOverview = [
         "icon": HeartPulse,
         "count": 9
     },
-    {
-        "title": "Total Doctor",
-        "icon": Stethoscope,
-        "count": 13
-    },
+    // {
+    //     "title": "Total Doctor",
+    //     "icon": Stethoscope,
+    //     "count": 13
+    // },
     {
         "title": "Appointment",
         "icon": Calendar,
