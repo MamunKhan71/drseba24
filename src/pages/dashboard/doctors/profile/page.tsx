@@ -1,16 +1,10 @@
-'use client'
-
-import { useCallback, useState } from 'react'
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Badge } from "@/components/ui/badge"
-import { GraduationCap, Clock, Award, BookOpen, PlusCircle, Text, X, Languages, BookOpenText } from 'lucide-react'
-import { NavigationTracker } from '@/app/(dashboard)/_components/NavigationTracker'
-import { usePathname } from 'next/navigation'
 import { Label } from '@/components/ui/label'
-import { useDropzone } from 'react-dropzone'
-import { FileWithPath } from 'react-dropzone';
+import { Textarea } from "@/components/ui/textarea"
+import { Award, BookOpen, BookOpenText, Clock, GraduationCap, Languages, PlusCircle, Text, X } from 'lucide-react'
+import { useState } from 'react'
 const initialDoctor = {
     "name": "Dr. Eshita Biswas",
     "title": "Associate Consultant",
@@ -42,7 +36,7 @@ const timelineItems = [
     "British Cardiovascular Society",
 ]
 
-export default function Component() {
+export default function DoctorProfile() {
     const [doctor, setDoctor] = useState(initialDoctor)
     // const [newQualification, setNewQualification] = useState('')
     // const [newLanguage, setNewLanguage] = useState('')
@@ -81,16 +75,16 @@ export default function Component() {
     //     // Handle the accepted files here
     //     console.log(acceptedFiles);
     // }, []);
-    const { getRootProps, getInputProps } = useDropzone()
+    // const { getRootProps, getInputProps } = useDropzone()
     return (
 
         <div className='space-y-4'>
             <div className='flex items-start justify-between'>
                 <div className='flex-1'>
-                    <NavigationTracker pathname={usePathname()} />
+                    {/* <NavigationTracker pathname={usePathname()} /> */}
                 </div>
                 <div className='max-w-lg'>
-                    <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-700 hover:to-primary text-foreground">
+                    <Button className="w-full bg-primary hover:bg-secondary text-white hover:text-white">
                         Save Profile
                     </Button>
                 </div>
@@ -102,10 +96,12 @@ export default function Component() {
                         <div className='col-span-2 grid grid-cols-7 gap-4'>
                             {/* <Image height={100} width={80} className='rounded-lg object-cover' alt='profile-img' src={'https://randomuser.me/api/portraits/women/64.jpg'}/> */}
                             <img className='w-full h-20 rounded-lg object-cover' src="https://randomuser.me/api/portraits/men/60.jpg" alt="" />
-                            <div className="col-span-6 flex items-center justify-center w-full" {...getRootProps()}>
+                            <div className="col-span-6 flex items-center justify-center w-full" 
+                            // {...getRootProps()}
+                            >
                                 <label
                                     htmlFor="dropzone-file"
-                                    className="flex flex-col items-center justify-center w-full h-20 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-blue-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-secondary"
+                                    className="flex flex-col items-center justify-center w-full h-20 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-green-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-secondary"
                                 >
                                     <div className="flex flex-col items-center justify-center p-4">
                                         <svg
@@ -128,7 +124,10 @@ export default function Component() {
                                             SVG, PNG, JPG or GIF (MAX. 800x400px)
                                         </p>
                                     </div>
-                                    <input {...getInputProps()} type="file" className="hidden" />
+                                    <input 
+                                    // {...getInputProps()} 
+                                    
+                                    type="file" className="hidden" />
                                 </label>
                             </div>
                         </div>
@@ -205,11 +204,11 @@ export default function Component() {
                         </h3>
                         <div className="flex flex-wrap gap-2 mb-2">
                             {doctor.qualifications.map((qual, index) => (
-                                <Badge key={index} variant="secondary" className="text-sm bg-purple-100 text-purple-800">
+                                <Badge key={index} variant="secondary" className="text-sm bg-green-100 text-primary">
                                     {qual}
                                     <button
                                         // onClick={() => removeItem('qualifications', index)} 
-                                        className="ml-2 text-purple-800 hover:text-purple-600">
+                                        className="ml-2 text-primary hover:text-secondary">
                                         <span className="sr-only">Remove</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -229,7 +228,7 @@ export default function Component() {
                             />
                             <Button
                                 // onClick={() => addItem('qualifications', newQualification, setNewQualification)} 
-                                size="icon" className="bg-purple-500 hover:bg-purple-600">
+                                size="icon" className="bg-primary hover:bg-secondary">
                                 <span className="sr-only">Add</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -263,7 +262,7 @@ export default function Component() {
                                     //     newEducation[index].institution = e.target.value
                                     //     setDoctor({ ...doctor, education: newEducation })
                                     // }}
-                                    className="mb-1 border-gray-300 focus:border-purple-500"
+                                    className="mb-1 border-gray-300 focus:border-primary"
                                     placeholder="Institution"
                                 />
                                 <Input
@@ -274,7 +273,7 @@ export default function Component() {
                                     //     newEducation[index].year = e.target.value
                                     //     setDoctor({ ...doctor, education: newEducation })
                                     // }}
-                                    className="border-gray-300 focus:border-purple-500"
+                                    className="border-gray-300 focus:border-primary"
                                     placeholder="Year"
                                 />
                             </div>
@@ -282,7 +281,7 @@ export default function Component() {
                         <div className='flex justify-end w-full'>
                             <Button
                                 // onClick={() => setDoctor({ ...doctor, education: [...doctor.education, { degree: '', institution: '', year: '' }] })}
-                                className="mt-2 bg-blue-500 text-foreground hover:bg-primary hover:text-foreground"
+                                className="mt-2 bg-primary text-white hover:bg-primary hover:text-foreground"
                             >
                                 <PlusCircle size={20} /> Add Education
                             </Button>
@@ -292,7 +291,7 @@ export default function Component() {
                         <h3 className="font-semibold mb-2 text-foreground inline-flex items-center"><BookOpenText className="w-5 h-5 mr-2" />Publications</h3>
                         <ul className="space-y-2">
                             {doctor.publications.map((pub, index) => (
-                                <li key={index} className="flex items-center gap-2  bg-blue-50 text-foreground hover:text-foreground font-medium hover:bg-blue-500 rounded-lg p-2 transition-all">
+                                <li key={index} className="flex items-center gap-2  bg-green-50 text-foreground hover:text-foreground font-medium hover:bg-primary rounded-lg p-2 transition-all">
                                     <span>{pub}</span>
                                     <button
                                         // onClick={() => removeItem('publications', index)} 
@@ -313,7 +312,7 @@ export default function Component() {
                             />
                             <Button
                                 // onClick={() => addItem('publications', newPublication, setNewPublication)} size="icon" 
-                                className="bg-blue-500 hover:bg-secondary">
+                                className="bg-primary hover:bg-secondary">
                                 <span className="sr-only">Add</span>
                                 <PlusCircle />
                             </Button>
@@ -336,7 +335,7 @@ export default function Component() {
                                     //     newCertificates[index].name = e.target.value
                                     //     setDoctor({ ...doctor, certificates: newCertificates })
                                     // }}
-                                    className="mb-1 border-gray-300 focus:border-purple-500"
+                                    className="mb-1 border-gray-300 focus:border-primary"
                                     placeholder="Certificate Name"
                                 />
                                 <Input
@@ -347,7 +346,7 @@ export default function Component() {
                                     //     newCertificates[index].year = e.target.value
                                     //     setDoctor({ ...doctor, certificates: newCertificates })
                                     // }}
-                                    className="border-gray-300 focus:border-purple-500"
+                                    className="border-gray-300 focus:border-primary"
                                     placeholder="Year"
                                 />
                             </div>
@@ -355,7 +354,7 @@ export default function Component() {
                         <div className='flex justify-end w-full'>
                             <Button
                                 // onClick={() => setDoctor({ ...doctor, certificates: [...doctor.certificates, { name: '', year: '' }] })}
-                                className="mt-2 bg-blue-500 text-foreground hover:bg-primary hover:text-foreground"
+                                className="mt-2 bg-primary text-white hover:bg-primary hover:text-foreground"
                             >
                                 <PlusCircle size={20} /> Add Certificate
                             </Button>
@@ -378,7 +377,7 @@ export default function Component() {
                         </h3>
                         <ul className="space-y-2">
                             {timeline.map((item, index) => (
-                                <li key={index} className="flex items-center gap-2  bg-blue-50 text-foreground hover:text-foreground font-medium hover:bg-blue-500 rounded-lg p-2 transition-all">
+                                <li key={index} className="flex items-center gap-2  bg-green-50 text-foreground hover:text-white font-medium hover:bg-primary rounded-lg p-2 transition-all">
                                     <span className="w-2 h-2 rounded-full"></span>
                                     <span>{item}</span>
                                     <button
@@ -401,7 +400,7 @@ export default function Component() {
                             <Button
                                 // onClick={addTimelineItem} 
                                 size="icon"
-                                className="bg-blue-500 hover:bg-secondary">
+                                className="bg-primary hover:bg-secondary">
                                 <span className="sr-only">Add</span>
                                 <PlusCircle />
                             </Button>
@@ -411,11 +410,11 @@ export default function Component() {
                         <h3 className="font-semibold mb-2 inline-flex items-center text-foreground"><Languages className="w-5 h-5 mr-2" />Languages</h3>
                         <div className="flex flex-wrap gap-2 mb-2">
                             {doctor.languages.map((lang, index) => (
-                                <Badge key={index} variant="secondary" className="text-sm bg-blue-100 text-blue-800">
+                                <Badge key={index} variant="secondary" className="text-sm bg-green-100 text-primary">
                                     {lang}
                                     <button
                                         // onClick={() => removeItem('languages', index)} 
-                                        className="ml-2 text-blue-800 hover:text-foreground">
+                                        className="ml-2 text-primary hover:text-foreground">
                                         <span className="sr-only">Remove</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -430,11 +429,11 @@ export default function Component() {
                                 // value={newLanguage}
                                 // onChange={(e) => setNewLanguage(e.target.value)}
                                 placeholder="New Language"
-                                className="flex-grow border-blue-300 focus:border-blue-500"
+                                className="flex-grow border-primary focus:border-secondary"
                             />
                             <Button
                                 // onClick={() => addItem('languages', newLanguage, setNewLanguage)} 
-                                size="icon" className="bg-blue-500 hover:bg-secondary">
+                                size="icon" className="bg-primary hover:bg-secondary">
                                 <span className="sr-only">Add</span>
                                 <PlusCircle />
                             </Button>

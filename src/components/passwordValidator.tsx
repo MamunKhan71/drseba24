@@ -50,7 +50,7 @@ export default function PasswordValidator() {
                 <Lock size={20} className='text-foreground absolute left-4 top-1/2 -translate-y-1/2' />
                 <Input
                     id="input-51"
-                    className="border px-12 py-6 rounded-lg text-blue-700"
+                    className="border px-12 py-6 rounded-lg text-primary"
                     placeholder="Password"
                     type={isVisible ? "text" : "password"}
                     value={password}

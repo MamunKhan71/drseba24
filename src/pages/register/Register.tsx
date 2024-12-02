@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Input } from '@/components/ui/input'
-import { Eye, EyeIcon as EyeClosed, Stethoscope, Upload, Heart, User, X, ArrowRight, Smile, Calculator } from 'lucide-react'
+import { Eye, EyeIcon as EyeClosed, Stethoscope, Upload, Heart, User, X, ArrowRight, Smile, Calculator, Lock, EyeOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -19,6 +19,7 @@ import HeaderTitle from '@/components/headerTitle'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from '@/components/ui/command'
 import { Textarea } from '@/components/ui/textarea'
+import PasswordValidator from '@/components/passwordValidator'
 // import HeaderTitle from '@/components/headerTitle'
 // import { Card, CardContent } from "@/components/ui/card"
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -331,40 +332,24 @@ const RegisterPage = () => {
                                             />
                                         </div>
                                         <div className='col-span-3'>
-                                            <Label htmlFor="password">Password *</Label>
+                                            <Label htmlFor="nid">NID No *</Label>
                                             <div className='relative'>
                                                 <Input
-                                                    id="password"
-                                                    {...register('password')}
-                                                    type={open ? "text" : "password"}
-                                                    placeholder="Enter password"
+                                                    id="text"
+                                                    {...register('nationalId')}
+                                                    placeholder="Enter National ID No."
                                                 />
-                                                <button
-                                                    type='button'
-                                                    className='absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700'
-                                                    onClick={() => setIsOpen(!open)}
-                                                >
-                                                    {open ? <Eye size={20} /> : <EyeClosed size={20} />}
-                                                </button>
                                             </div>
                                             {errors?.password && <p className='text-xs text-destructive mt-1'>{errors.password.message}</p>}
                                         </div>
                                         <div className='col-span-2'>
-                                            <Label htmlFor="password">Confirm Password *</Label>
+                                            <Label htmlFor="passport">Passport No</Label>
                                             <div className='relative'>
                                                 <Input
                                                     id="password"
-                                                    {...register('password')}
-                                                    type={open ? "text" : "password"}
-                                                    placeholder="Enter password"
+                                                    {...register('passport')}
+                                                    placeholder="Enter passport no."
                                                 />
-                                                <button
-                                                    type='button'
-                                                    className='absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700'
-                                                    onClick={() => setIsOpen(!open)}
-                                                >
-                                                    {open ? <Eye size={20} /> : <EyeClosed size={20} />}
-                                                </button>
                                             </div>
                                             {errors?.password && <p className='text-xs text-destructive mt-1'>{errors.password.message}</p>}
                                         </div>
@@ -481,7 +466,79 @@ const RegisterPage = () => {
                                         </div>
                                     </TabsContent>
 
-                                    <TabsContent value='Final Step'>
+                                    <TabsContent value='Final Step' className='space-y-4'>
+                                        {/* <div>
+                                            <Label htmlFor="password">Password *</Label>
+                                            <div className='relative'>
+                                                <Input
+                                                    id="password"
+                                                    {...register('password')}
+                                                    type={open ? "text" : "password"}
+                                                    placeholder="Enter password"
+                                                />
+                                                <button
+                                                    type='button'
+                                                    className='absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700'
+                                                    onClick={() => setIsOpen(!open)}
+                                                >
+                                                    {open ? <Eye size={20} /> : <EyeClosed size={20} />}
+                                                </button>
+                                            </div>
+                                            {errors?.password && <p className='text-xs text-destructive mt-1'>{errors.password.message}</p>}
+                                        </div> */}
+                                        <div>
+                                            <PasswordValidator />
+                                        </div>
+                                        <div>
+                                            <Label htmlFor="password">Confirm Password *</Label>
+                                            <div className="relative">
+                                                <Lock size={20} className='text-foreground absolute left-4 top-1/2 -translate-y-1/2' />
+                                                <Input
+                                                    id="input-51"
+                                                    className="border px-12 py-6 rounded-lg text-primary"
+                                                    placeholder="Password"
+                                                // type={isVisible ? "text" : "password"}
+                                                // value={password}
+                                                // onChange={(e) => setPassword(e.target.value)}
+                                                // aria-invalid={strengthScore < 4}
+                                                // aria-describedby="password-strength"
+
+                                                />
+                                                <button
+                                                    className="absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-lg text-muted-foreground/80 transition-shadow hover:text-foreground focus-visible:border focus-visible:border-ring focus-visible:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+                                                    type="button"
+                                                    // onClick={toggleVisibility}
+                                                    // aria-label={isVisible ? "Hide password" : "Show password"}
+                                                    // aria-pressed={isVisible}
+                                                    aria-controls="password"
+                                                >
+                                                    {true ? (
+                                                        <EyeOff size={20} strokeWidth={2} aria-hidden="true" />
+                                                    ) : (
+                                                        <Eye size={20} strokeWidth={2} aria-hidden="true" />
+                                                    )}
+                                                </button>
+                                            </div>
+                                        </div>
+                                        {/* <div>
+                                            <Label htmlFor="password">Confirm Password *</Label>
+                                            <div className='relative'>
+                                                <Input
+                                                    id="password"
+                                                    {...register('password')}
+                                                    type={open ? "text" : "password"}
+                                                    placeholder="Enter password"
+                                                />
+                                                <button
+                                                    type='button'
+                                                    className='absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700'
+                                                    onClick={() => setIsOpen(!open)}
+                                                >
+                                                    {open ? <Eye size={20} /> : <EyeClosed size={20} />}
+                                                </button>
+                                            </div>
+                                            {errors?.password && <p className='text-xs text-destructive mt-1'>{errors.password.message}</p>}
+                                        </div> */}
                                         <div className="flex items-center space-x-2">
                                             <Checkbox id="terms" {...register('terms')} />
                                             <label

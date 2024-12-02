@@ -2,6 +2,7 @@ import MainLayout from "@/components/Layout/MainLayout";
 import AllAppointments from "@/pages/dashboard/appointments/AllAppointments";
 import Dashboard from "@/pages/dashboard/Dashboard";
 import DoctorPage from "@/pages/dashboard/doctors/Doctors";
+import DoctorProfile from "@/pages/dashboard/doctors/profile/page";
 import PatientsPage from "@/pages/dashboard/patients/PatientPage";
 import ForgetPassword from "@/pages/forget-password/ForgetPassword";
 import LoginPage from "@/pages/login/Login";
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: 'doctors',
                 element: <DoctorPage />
+            },
+            {
+                path: 'profile',
+                element: <DoctorProfile />
             },
             {
                 path: 'appointments',
