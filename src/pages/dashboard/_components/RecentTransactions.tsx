@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
@@ -15,7 +14,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-import { flexRender, Table as TanstackTable, ColumnDef } from "@tanstack/react-table"; // Import necessary types from tanstack
+import { ColumnDef, flexRender, Table as TanstackTable } from "@tanstack/react-table"; // Import necessary types from tanstack
 import { ChevronDown } from "lucide-react";
 
 // Define the props type

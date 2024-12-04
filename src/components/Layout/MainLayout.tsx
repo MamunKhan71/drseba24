@@ -11,15 +11,15 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 // import { AnimatePresence, motion } from 'framer-motion';
-import { Archive, BadgePercent, BellIcon, BookmarkCheck, Briefcase, ChevronDown, ClipboardPlus, Edit, FileText, Headset, LayoutDashboard, LucideBriefcaseMedical, Moon, PlusCircle, School, Settings, User, UserCog, UserPen, UserPenIcon, UserRound, Users, Variable } from 'lucide-react';
+import { Archive, BadgePercent, BellIcon, Briefcase, ChevronDown, ClipboardPlus, FileText, Headset, LayoutDashboard, LucideBriefcaseMedical, Moon, PlusCircle, School, Settings, User, UserCog, UserPen, UserRound, Users, Variable } from 'lucide-react';
 // import { signOut, useSession } from 'next-auth/react';
 // import Image from 'next/image';
 // import Link from 'next/link';
 import React, { useState } from 'react';
 // import { NavigationTracker } from './_components/NavigationTracker';
 // import { usePathname } from 'next/navigation';
-import FloatingSpeedDial from '../FloatingSpeedDial';
 import { Link, Outlet } from 'react-router-dom';
+import FloatingSpeedDial from '../FloatingSpeedDial';
 
 
 interface DashboardCategory {

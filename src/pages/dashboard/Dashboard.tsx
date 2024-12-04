@@ -1,7 +1,7 @@
-import { BellIcon, Calendar, HeartPulse, Stethoscope } from 'lucide-react'
+import { BellIcon, Calendar, HeartPulse } from 'lucide-react'
 // import { usePathname } from 'next/navigation'
 // import { NavigationTracker } from '../_components/NavigationTracker'
-import { useState } from 'react'
+import { columns } from '@/components/ui/columns'
 import {
     ColumnFiltersState,
     SortingState,
@@ -12,15 +12,15 @@ import {
     getSortedRowModel,
     useReactTable,
 } from "@tanstack/react-table"
-import { columns } from '@/components/ui/columns'
+import { useState } from 'react'
+import { useLocation } from 'react-router'
+import AppointmentRequests from './_components/AppointmentRequests'
 import DashboardCard from './_components/DashboardCard'
 import EarningsChart from './_components/EarningsChart'
-import RecentTransactions from './_components/RecentTransactions'
-import AppointmentRequests from './_components/AppointmentRequests'
-import RecentPatients from './_components/RecentPatients'
-import ProfileProgress from './ProfileProgress'
-import { useLocation } from 'react-router'
 import { NavigationTracker } from './_components/NavigationTracker'
+import RecentPatients from './_components/RecentPatients'
+import RecentTransactions from './_components/RecentTransactions'
+import ProfileProgress from './ProfileProgress'
 
 interface Payment {
     id: string

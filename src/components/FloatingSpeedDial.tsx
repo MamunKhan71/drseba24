@@ -1,6 +1,6 @@
-import React, { useState, ReactNode } from "react"; // Import ReactNode
 import { Button } from "@/components/ui/button";
 import { Pill, Plus, Stethoscope, TestTube, UserPlus } from "lucide-react";
+import { ReactNode, useState } from "react"; // Import ReactNode
 
 export default function FloatingSpeedDial() {
     const [isOpen, setIsOpen] = useState<boolean>(false);

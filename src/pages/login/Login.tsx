@@ -1,10 +1,10 @@
 "use client"
-import React, { useState } from 'react'
+import HeaderTitle from '@/components/headerTitle'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Eye, EyeClosed, Lock, Mail } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import HeaderTitle from '@/components/headerTitle'
-import { useForm, Resolver } from "react-hook-form"
+import { useState } from 'react'
+import { Resolver, useForm } from "react-hook-form"
 import { Link } from 'react-router-dom'
 
 type FormValues = {

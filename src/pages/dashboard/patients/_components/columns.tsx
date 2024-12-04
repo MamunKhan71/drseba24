@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Column, ColumnDef, Row } from "@tanstack/react-table";
 import { ArrowUpDown, Eye, MoreHorizontal, PenBox, X } from "lucide-react";
-import { Row, ColumnDef, Column } from "@tanstack/react-table";
 
 // Define RowData type
 interface RowData {

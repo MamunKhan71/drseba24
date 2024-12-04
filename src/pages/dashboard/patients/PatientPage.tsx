@@ -1,6 +1,11 @@
 "use client"
-import React, { useState } from 'react'
-import { ArrowDownToLine, ArrowUpToLine, Ban, CalendarClock, CalendarDays, Clock, Columns, DollarSign, Droplets, Loader, PlusCircle } from 'lucide-react'
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 import {
     flexRender,
     getCoreRowModel,
@@ -9,15 +14,9 @@ import {
     getSortedRowModel,
     useReactTable,
 } from "@tanstack/react-table"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
+import { ArrowDownToLine, ArrowUpToLine, Ban, CalendarClock, CalendarDays, ChevronDown, Clock, Columns, DollarSign, Droplets, Loader, PlusCircle } from 'lucide-react'
+import { useState } from 'react'
 import { columns } from './_components/columns'
-import { ChevronDown } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 // import { Checkbox } from "@/components/ui/checkbox"
@@ -42,12 +41,9 @@ import { CalendarPicker } from '@/components/CalendarPicker'
 // import { usePathname } from 'next/navigation'
 // import Link from 'next/link'
 // import { GiFemale, GiMale } from 'react-icons/gi'
-import { VisibilityState } from '@tanstack/react-table';
-import { SortingState } from '@tanstack/react-table';
-import { ColumnFiltersState } from '@tanstack/react-table';
-import { RowSelectionState } from '@tanstack/react-table';
-import { Link } from 'react-router-dom'
+import { ColumnFiltersState, RowSelectionState, SortingState, VisibilityState } from '@tanstack/react-table'
 import { useLocation } from 'react-router'
+import { Link } from 'react-router-dom'
 import { NavigationTracker } from '../_components/NavigationTracker'
 const PatientsPage = () => {
     const [sorting, setSorting] = useState<SortingState>([])

@@ -1,15 +1,14 @@
 import { Button } from '@/components/ui/button'
-import React, { useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select'
+import { Calendar } from '@/components/ui/calendar'
 import {
-    flexRender,
-    getCoreRowModel,
-    getFilteredRowModel,
-    getSortedRowModel,
-    useReactTable,
-} from "@tanstack/react-table"
-import { CalendarIcon, LayoutGrid, LayoutList, PlusIcon } from 'lucide-react'
+    Dialog,
+    DialogContent,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import {
     Table,
     TableBody,
@@ -18,21 +17,22 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import {
-    Dialog,
-    DialogContent,
-    DialogTrigger,
-} from "@/components/ui/dialog"
-import { Label } from '@/components/ui/label'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Calendar } from '@/components/ui/calendar'
 import { Textarea } from '@/components/ui/textarea'
+import {
+    flexRender,
+    getCoreRowModel,
+    getFilteredRowModel,
+    getSortedRowModel,
+    useReactTable,
+} from "@tanstack/react-table"
+import { CalendarIcon, LayoutGrid, LayoutList, PlusIcon } from 'lucide-react'
+import { useState } from 'react'
 // import { NavigationTracker } from '../../_components/NavigationTracker'
 // import { usePathname } from 'next/navigation'
-import { columns } from './_components/columns'
 import { SortingState } from '@tanstack/react-table'
 import { useLocation } from 'react-router'
 import { NavigationTracker } from '../_components/NavigationTracker'
+import { columns } from './_components/columns'
 const AllAppointments = () => {
     const [sorting, setSorting] = useState<SortingState>([])
     const location = useLocation()
