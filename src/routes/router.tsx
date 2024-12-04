@@ -9,7 +9,6 @@ import PersonalInformation from "@/pages/dashboard/ProfileSettings";
 import Profession from "@/pages/dashboard/profile/profession/Profession";
 import ForgetPassword from "@/pages/forget-password/ForgetPassword";
 import LoginPage from "@/pages/login/Login";
-import Register from "@/pages/register/Register";
 import VerifyEmailPage from "@/pages/verify/Verify";
 import { createBrowserRouter } from "react-router-dom";
 import ProfileSettings from "@/pages/dashboard/ProfileSettings";
