@@ -20,7 +20,7 @@ import ProfileCompletionCard from './profile/_components/ProfileCompletionCard'
 
 export default function ProfileSettings() {
   const [progress, setProgress] = useState(65)
-  const location = useLocation()
+  const location = useLocation().pathname
 
   return (
     <div className='space-y-4'>

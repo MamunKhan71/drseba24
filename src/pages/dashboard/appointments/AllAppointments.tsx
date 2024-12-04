@@ -35,7 +35,7 @@ import { NavigationTracker } from '../_components/NavigationTracker'
 import { columns } from './_components/columns'
 const AllAppointments = () => {
     const [sorting, setSorting] = useState<SortingState>([])
-    const location = useLocation()
+    const location = useLocation().pathname
 
     const table = useReactTable({
         data: appointments,

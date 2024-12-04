@@ -38,7 +38,7 @@ export default function Dashboard() {
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = useState({})
     const [isCompleted, setIsCompleted] = useState(false)
-    const location = useLocation()
+    const location = useLocation().pathname
 
     const table = useReactTable({
         data: Payment,

@@ -15,9 +15,7 @@ interface NavigationTrackerProps {
     pathname: string;
 }
 export const NavigationTracker: React.FC<NavigationTrackerProps> = ({ pathname = '' }) => {
-    const pathSegments = pathname.pathname.split('/').filter(Boolean)
-    console.log(pathSegments);
-
+    const pathSegments = pathname.split('/').filter(Boolean)
 
     return (
         <Breadcrumb>

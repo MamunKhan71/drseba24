@@ -24,7 +24,7 @@ import { NavigationTracker } from "../_components/NavigationTracker"
 // import { NavigationTracker } from '../../_components/NavigationTracker'
 const daysOfWeek = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 const DoctorPage = () => {
-    const location = useLocation()
+    const location = useLocation().pathname
     type DayAvailability = {
         startTime: string;
         endTime: string;

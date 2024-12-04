@@ -7,7 +7,7 @@ import { useLocation } from 'react-router'
 import { NavigationTracker } from '../_components/NavigationTracker'
 
 const Settings = () => {
-    const location = useLocation()
+    const location = useLocation().pathname
     return (
         <div className='space-y-4'>
             <NavigationTracker pathname={location} />

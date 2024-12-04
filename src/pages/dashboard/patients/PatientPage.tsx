@@ -50,7 +50,7 @@ const PatientsPage = () => {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
     const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
-    const location = useLocation()
+    const location = useLocation().pathname
 
     const table = useReactTable({
         data,
