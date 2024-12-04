@@ -56,7 +56,7 @@ const AllAppointments = () => {
                 <div className='flex justify-end items-center'>
                     <Dialog>
                         <DialogTrigger>
-                            <Button className="inline-flex gap-2 items-center justify-center bg-secondary hover:bg-primary rounded-full text-foreground"><PlusIcon size={16} /> New Appointment</Button>
+                            <Button className="inline-flex gap-2 items-center justify-center bg-secondary hover:bg-primary rounded-full text-white"><PlusIcon size={16} /> New Appointment</Button>
                         </DialogTrigger>
                         <DialogContent className='bg-white max-w-4xl'>
                             <div className='flex items-center justify-center w-full'>
@@ -187,7 +187,7 @@ const AllAppointments = () => {
                                                 <Textarea></Textarea>
                                             </div>
                                             <div className='w-full text-white col-span-2'>
-                                                <Button className="w-full bg-blue-500 text-foreground hover:bg-primary">Book Appointment</Button>
+                                                <Button className="w-full bg-primary text-white hover:bg-primary">Book Appointment</Button>
                                             </div>
 
                                         </div>
@@ -217,7 +217,7 @@ const AllAppointments = () => {
                                 </SelectContent>
                             </Select>
                             <div className='border rounded-md p-[3px] flex items-center gap-2 justify-center'>
-                                <button className='border rounded-sm p-0.5 bg-primary text-foreground'><LayoutList size={22} /></button>
+                                <button className='border rounded-sm p-0.5 bg-primary text-white'><LayoutList size={22} /></button>
                                 <button className='border rounded-sm p-0.5 text-foreground'><LayoutGrid size={22} /></button>
                             </div>
                         </div>

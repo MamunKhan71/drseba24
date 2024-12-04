@@ -95,7 +95,7 @@ const LoginPage = () => {
                                 </div>
 
 
-                                <Link to={'/auth/forget-password'} className='text-sm text-primary hover:text-foreground transition-all duration-200 font-medium hover:underline'><p className='text-right'>Forget Password?</p></Link>
+                                <Link to={'/forget-password'} className='text-sm text-primary hover:text-foreground transition-all duration-200 font-medium hover:underline'><p className='text-right'>Forget Password?</p></Link>
                                 {/* TODO: Make it work */}
                                 {/* <Link href={'/dashboard'}><Button
                                     // type="submit" 
@@ -107,12 +107,7 @@ const LoginPage = () => {
                             </form>
                         </div>
 
-                        <div className='px-8 py-4 bg-primary bg-opacity-100 flex justify-center rounded-b-xl'>
-                            <p className='text-sm text-white'>
-                                Are you a new doctor? {" "}
-                                <Link to={'/register'} className='text-white hover:text-white hover:underline font-bold'>Sign Up</Link>
-                            </p>
-                        </div>
+                    
                     </div>
                 </div>
             </div>

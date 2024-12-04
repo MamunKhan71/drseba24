@@ -46,19 +46,17 @@ const ForgetPassword = () => {
 
     return (
         <div
-            className='flex items-center justify-center mt-28 w-full'
+            className='flex items-center justify-center w-full min-h-screen relative'
         >
             <div className='w-full'>
                 <div
                     className="relative max-w-xl mx-auto w-full border shadow-lg rounded-lg space-y-8"
                 >
-                    <div
-                        className="absolute inset-0 bg-[url('https://res.cloudinary.com/dz3kxnsxr/image/upload/v1727461049/clipboard-stethoscope_xo2uo1.jpg')] bg-cover opacity-5 rounded-xl"
-                    >
-                    </div>
                     <div className='relative z-10'>
                         <div className={`p-12 space-y-4`}>
-                            <HeaderTitle title='Forgot Password' />
+                            <div className='flex items-center justify-center w-full'>
+                                <HeaderTitle title='Forgot Password' />
+                            </div>
                             <p className='text-center text-slate-400 font-medium mb-6'>Enter your email address and we&apos;ll send you a link to reset your password.</p>
                             <form className='mt-6 space-y-4'>
                                 <div className='relative'>
@@ -77,6 +75,10 @@ const ForgetPassword = () => {
                         </Link>
                     </div>
                 </div>
+            </div>
+            <div
+                className="absolute inset-0 bg-[url('https://res.cloudinary.com/dz3kxnsxr/image/upload/v1727461049/clipboard-stethoscope_xo2uo1.jpg')] bg-cover opacity-5 rounded-xl"
+            >
             </div>
         </div>
     )

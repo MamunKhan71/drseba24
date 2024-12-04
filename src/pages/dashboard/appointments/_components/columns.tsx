@@ -48,7 +48,7 @@ export const columns: ColumnDef<RowData, string | number>[] = [
                     </div>
                     <div className='space-y-2'>
                         <p>{patientName}</p>
-                        <Badge variant={'outline'} className={'text-blue-400'}>#{patientID}</Badge>
+                        <Badge variant={'outline'} className={'text-primary'}>#{patientID}</Badge>
                     </div>
                 </div>
             )
@@ -103,7 +103,7 @@ export const columns: ColumnDef<RowData, string | number>[] = [
             return (
                 <div className='space-y-2'>
                     <p>{doctorName}</p>
-                    <Badge variant={'outline'} className={'text-blue-400'}>{doctorDesignation}</Badge>
+                    <Badge variant={'outline'} className={'text-primary'}>{doctorDesignation}</Badge>
                 </div>
             )
         }
@@ -129,7 +129,7 @@ export const columns: ColumnDef<RowData, string | number>[] = [
         cell: ({ row }: { row: Row<RowData> }) => {
             const { status } = row.original
             return (
-                <p className={`${status === "Success" ? 'text-green-400' : status === 'Cancelled' ? 'text-red-400' : status === 'Progress' ? 'text-blue-400' : 'text-slate-500'}`}>{status}</p>
+                <p className={`${status === "Success" ? 'text-green-400' : status === 'Cancelled' ? 'text-red-400' : status === 'Progress' ? 'text-accent' : 'text-slate-500'}`}>{status}</p>
             )
         }
     },
