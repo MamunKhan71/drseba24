@@ -18,6 +18,9 @@ import EarningsChart from './_components/EarningsChart'
 import RecentTransactions from './_components/RecentTransactions'
 import AppointmentRequests from './_components/AppointmentRequests'
 import RecentPatients from './_components/RecentPatients'
+import ProfileProgress from './ProfileProgress'
+import { useLocation } from 'react-router'
+import { NavigationTracker } from './_components/NavigationTracker'
 
 interface Payment {
     id: string
@@ -34,6 +37,8 @@ export default function Dashboard() {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = useState({})
+    const [isCompleted, setIsCompleted] = useState(false)
+    const location = useLocation()
 
     const table = useReactTable({
         data: Payment,
@@ -57,23 +62,30 @@ export default function Dashboard() {
     return (
         <div className='w-full'>
             <div className='space-y-4'>
-                {/* <NavigationTracker pathname={usePathname()} /> */}
+                <NavigationTracker pathname={location} />
                 <div className='space-y-4'>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                        {dashOverview.map((dash, index) => (
-                            <DashboardCard key={index} {...dash} />
-                        ))}
-                    </div>
-                    <div className='grid grid-cols-1 lg:grid-cols-4 gap-6'>
-                        <div className='lg:col-span-3 space-y-6'>
-                            <EarningsChart />
-                            <RecentTransactions table={table} columns={columns} />
-                        </div>
-                        <div className='space-y-6'>
-                            <AppointmentRequests />
-                            <RecentPatients />
-                        </div>
-                    </div>
+                    {
+                        isCompleted ? <>
+                            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                                {dashOverview.map((dash, index) => (
+                                    <DashboardCard key={index} {...dash} />
+                                ))}
+                            </div>
+                            <div className='grid grid-cols-1 lg:grid-cols-4 gap-6'>
+                                <div className='lg:col-span-3 space-y-6'>
+                                    <EarningsChart />
+                                    <RecentTransactions table={table} columns={columns} />
+                                </div>
+                                <div className='space-y-6'>
+                                    <AppointmentRequests />
+                                    <RecentPatients />
+                                </div>
+                            </div>
+                        </> : <>
+                            <ProfileProgress />
+                        </>
+                    }
+
                 </div>
             </div>
         </div>

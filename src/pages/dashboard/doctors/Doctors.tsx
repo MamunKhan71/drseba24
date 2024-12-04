@@ -18,24 +18,27 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { Label } from '@/components/ui/label'
+import { useLocation } from "react-router"
+import { NavigationTracker } from "../_components/NavigationTracker"
 // import { usePathname } from 'next/navigation'
 // import { NavigationTracker } from '../../_components/NavigationTracker'
 const daysOfWeek = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 const DoctorPage = () => {
+    const location = useLocation()
     type DayAvailability = {
         startTime: string;
         endTime: string;
     };
-    
+
     const [selectedDays, setSelectedDays] = useState<Record<string, boolean>>(
         daysOfWeek.reduce((acc, day) => ({ ...acc, [day]: false }), {})
     );
-    
+
     const [availability, setAvailability] = useState<Record<string, DayAvailability>>(
         daysOfWeek.reduce((acc, day) => ({ ...acc, [day]: { startTime: "", endTime: "" } }), {})
     );
 
-    const handleCheckboxDayChange = (day: string ) => {
+    const handleCheckboxDayChange = (day: string) => {
         setSelectedDays((prev) => ({
             ...prev,
             [day]: !prev[day],
@@ -63,7 +66,7 @@ const DoctorPage = () => {
     // }
     return (
         <div className='space-y-4'>
-            {/* <NavigationTracker pathname={usePathname()} /> */}
+            <NavigationTracker pathname={location} />
             <div className='space-y-12'>
                 <div className='grid grid-cols-3 gap-6'>
                     {

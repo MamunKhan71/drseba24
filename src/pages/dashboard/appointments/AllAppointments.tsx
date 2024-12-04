@@ -31,8 +31,11 @@ import { Textarea } from '@/components/ui/textarea'
 // import { usePathname } from 'next/navigation'
 import { columns } from './_components/columns'
 import { SortingState } from '@tanstack/react-table'
+import { useLocation } from 'react-router'
+import { NavigationTracker } from '../_components/NavigationTracker'
 const AllAppointments = () => {
     const [sorting, setSorting] = useState<SortingState>([])
+    const location = useLocation()
 
     const table = useReactTable({
         data: appointments,
@@ -48,7 +51,7 @@ const AllAppointments = () => {
     })
     return (
         <div className='space-y-4'>
-            {/* <NavigationTracker pathname={usePathname()} /> */}
+            <NavigationTracker pathname={location} />
             <div className='space-y-6'>
                 <div className='flex justify-end items-center'>
                     <Dialog>

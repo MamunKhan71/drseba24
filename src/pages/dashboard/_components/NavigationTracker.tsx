@@ -9,12 +9,15 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { Link } from "react-router-dom";
 
 interface NavigationTrackerProps {
     pathname: string;
 }
 export const NavigationTracker: React.FC<NavigationTrackerProps> = ({ pathname = '' }) => {
-    const pathSegments = pathname.split('/').filter(Boolean)
+    const pathSegments = pathname.pathname.split('/').filter(Boolean)
+    console.log(pathSegments);
+
 
     return (
         <Breadcrumb>
@@ -32,14 +35,15 @@ export const NavigationTracker: React.FC<NavigationTrackerProps> = ({ pathname =
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
                                 {isLast ? (
-                                    <BreadcrumbPage className="font-medium text-blue-700">{label}</BreadcrumbPage>
+                                    <BreadcrumbPage className="font-medium text-primary">{label}</BreadcrumbPage>
                                 ) : (
-                                    <BreadcrumbLink href={href}>{label}</BreadcrumbLink>
+                                    <Link to={href}>{label}</Link>
                                 )}
                             </BreadcrumbItem>
                         </React.Fragment>
                     )
                 })}
+
             </BreadcrumbList>
         </Breadcrumb>
     )

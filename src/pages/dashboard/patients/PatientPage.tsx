@@ -47,11 +47,14 @@ import { SortingState } from '@tanstack/react-table';
 import { ColumnFiltersState } from '@tanstack/react-table';
 import { RowSelectionState } from '@tanstack/react-table';
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router'
+import { NavigationTracker } from '../_components/NavigationTracker'
 const PatientsPage = () => {
     const [sorting, setSorting] = useState<SortingState>([])
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
     const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+    const location = useLocation()
 
     const table = useReactTable({
         data,
@@ -74,7 +77,7 @@ const PatientsPage = () => {
 
     return (
         <div className='space-y-4'>
-            {/* <NavigationTracker pathname={usePathname()} /> */}
+            <NavigationTracker pathname={location} />
             <div className='space-y-6 relative'>
                 <div className='grid grid-cols-3 gap-6'>
                     {
@@ -186,7 +189,7 @@ const PatientsPage = () => {
                                     </SelectItem>
                                 </SelectContent>
                             </Select>
-                            <CalendarPicker className={''}/>
+                            <CalendarPicker className={''} />
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
                                     <Button variant="outline" className="ml-auto inline-flex gap-2 items-center">
@@ -320,9 +323,9 @@ type RowData = {
     email: string;
     blood: string;
     age: number;
-    amount: string;  
+    amount: string;
 };
-const data : RowData[] = [
+const data: RowData[] = [
     {
         "id": "P001",
         "status": "pending",
