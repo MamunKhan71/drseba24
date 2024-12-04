@@ -33,9 +33,9 @@ interface DashboardProfile {
     name: string;
     href: string;
 }
-interface DashboardLayoutProps {
-    children: React.ReactNode;
-}
+// interface DashboardLayoutProps {
+//     children: React.ReactNode;
+// }
 export default function MainLayout() {
     // const pathname = usePathname().split('/')
     // const pathnameText = pathname[pathname.length - 1].replace('-', " ").toUpperCase() || '/'
@@ -242,7 +242,10 @@ export default function MainLayout() {
                                     <DropdownMenuItem>Billing</DropdownMenuItem>
                                     <DropdownMenuItem>Team</DropdownMenuItem>
                                     <DropdownMenuSeparator />
-                                    <DropdownMenuItem className="font-bold hover:cursor-pointer" onClick={() => signOut({ callbackUrl: '/auth/login' })}>Logout</DropdownMenuItem>
+                                    <DropdownMenuItem className="font-bold hover:cursor-pointer" 
+                                    // onClick={() => signOut({ callbackUrl: '/auth/login' })}
+                                    
+                                    >Logout</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </div>
