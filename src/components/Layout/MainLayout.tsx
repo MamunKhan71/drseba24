@@ -98,8 +98,8 @@ export default function MainLayout() {
     })
     const dashboardProfile: DashboardProfile[] = [
         { icon: User, name: 'Personal Info', href: '/dashboard/profile' },
-        { icon: School, name: 'Education', href: '/dashboard/doctors/profile' },
-        { icon: Briefcase, name: 'Professional Info', href: '/dashboard/edit-profile' },
+        // { icon: School, name: 'Education', href: '/dashboard/doctors/profile' },
+        // { icon: Briefcase, name: 'Professional Info', href: '/dashboard/edit-profile' },
         // { icon: BookmarkCheck, name: 'Settings', href: '/dashboard/my-bookings' },
     ]
 
