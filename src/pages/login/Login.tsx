@@ -100,14 +100,16 @@ const LoginPage = () => {
                                 {/* <Link href={'/dashboard'}><Button
                                     // type="submit" 
                                     className="mt-5 w-full py-6 px-4 bg-gradient-to-r from-blue-500 to-blue-700 text-foreground font-bold rounded-lg shadow-lg hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-900 transition duration-200">Login</Button></Link> */}
-                                <Button
-                                    type="submit"
-                                    className="mt-5 w-full py-6 px-4 bg-gradient-to-r from-primary to-secondary text-white hover:text-white font-bold rounded-lg shadow-lg hover:from-secondary hover:to-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-primary transition duration-200">Login</Button>
+                                <Link to={'/dashboard'}>
+                                    <Button
+                                        type="submit"
+                                        className="mt-5 w-full py-6 px-4 bg-gradient-to-r from-primary to-secondary text-white hover:text-white font-bold rounded-lg shadow-lg hover:from-secondary hover:to-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-primary transition duration-200">Login</Button>
+                                </Link>
                                 {/* Experimental : Risk  */}
                             </form>
                         </div>
 
-                    
+
                     </div>
                 </div>
             </div>
