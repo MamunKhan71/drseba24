@@ -20,6 +20,8 @@ import React, { useState } from 'react';
 // import { usePathname } from 'next/navigation';
 import { Link, Outlet } from 'react-router-dom';
 import FloatingSpeedDial from '../FloatingSpeedDial';
+// import { SidebarProvider, SidebarTrigger } from '../ui/sidebar';
+// import { AppSidebar } from '../app-sidebar';
 
 
 interface DashboardCategory {
@@ -46,7 +48,7 @@ export default function MainLayout() {
     const [isDashboardOpen, setIsDashboardOpen] = useState<boolean>(true)
     const [isProfileOpen, setIsProfileOpen] = useState<boolean>(true)
     const rolePermissions: Record<string, string[]> = {
-        doctor: ["Overview", "Patients", "Appointments","Schedule", "Prescriptions", "Personal Info", "Professional Info", "Settings", "Education"],
+        doctor: ["Overview", "Patients", "Appointments", "Schedule", "Prescriptions", "Personal Info", "Professional Info", "Settings", "Education"],
         admin: ["Overview", "Patients", "Doctors", "Appointments", "Lab Tests", "Receptionist", "Add Medicine", "Prescriptions"],
         // Add more roles and their permissions here
     };
@@ -110,7 +112,7 @@ export default function MainLayout() {
     })
 
     return (
-        <div className='flex relative  font-poppins'>
+        <div className='flex relative font-poppins'>
             <div className='basis-[300px] space-y-10 bg-primary min-h-screen p-8 pt-5'>
                 {/* <Link to={'/'} className='flex items-center justify-start'>
                     <img className='w-32' src="/logo.svg" alt="" />
@@ -245,7 +247,7 @@ export default function MainLayout() {
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem className="font-bold hover:cursor-pointer" 
                                     // onClick={() => signOut({ callbackUrl: '/auth/login' })}
-                                    
+
                                     >Logout</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
@@ -260,5 +262,15 @@ export default function MainLayout() {
                 <FloatingSpeedDial />
             </div>
         </div>
+        // <>
+        //     <SidebarProvider>
+        //         <AppSidebar className='bg-primary text-white'/>
+        //         <main className='p-4'>
+        //             <SidebarTrigger  />
+        //             <Outlet />
+        //         </main>
+        //     </SidebarProvider>
+        // </>
     );
+
 }

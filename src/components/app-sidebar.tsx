@@ -1,14 +1,29 @@
 import {
+  Archive,
+  BadgePercent,
   BookOpen,
   Bot,
+  Calendar,
+  ClipboardPlus,
   Command,
+  FileText,
   Frame,
+  Headset,
+  LayoutDashboard,
   LifeBuoy,
+  LucideBriefcaseMedical,
   Map,
   PieChart,
+  PlusCircle,
   Send,
+  Settings,
   Settings2,
   SquareTerminal,
+  SquareTerminalIcon,
+  User,
+  UserRound,
+  Users,
+  Variable,
 } from "lucide-react"
 import * as React from "react"
 
@@ -28,140 +43,96 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
+    name: "Mamun",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
-      title: "Playground",
+      title: "Dashboard",
       url: "#",
-      icon: SquareTerminal,
+      icon: LayoutDashboard,
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Overview",
+          url: "/dashboard",
+          icon: LayoutDashboard,
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "Patients",
+          url: "/dashboard/patients",
+          icon: Users,
         },
         {
-          title: "Settings",
-          url: "#",
+          title: "Doctors",
+          url: "/dashboard/doctors",
+          icon: UserRound,
+        },
+        {
+          title: "Appointments",
+          url: "/dashboard/appointments",
+          icon: LucideBriefcaseMedical,
+        },
+        {
+          title: "Lab Tests",
+          url: "/dashboard/lab-tests",
+          icon: Variable,
+        },
+        {
+          title: "Receptionist",
+          url: "/dashboard/receptions",
+          icon: Variable,
+        },
+        {
+          title: "Add Medicine",
+          url: "/dashboard/add-medicine",
+          icon: PlusCircle,
+        },
+        {
+          title: "Prescriptions",
+          url: "/dashboard/prescriptions",
+          icon: ClipboardPlus,
         },
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
+      title: "Profile",
+      url: "/dashboard/profile",
+      icon: User,
       items: [
         {
-          title: "Genesis",
-          url: "#",
+          title: "Personal Info",
+          url: "/dashboard/profile",
+          icon: User,
         },
         {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
+          title: "Schedule",
+          url: "/dashboard/schedule",
+          icon: Calendar,
         },
       ],
     },
     {
       title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      url: "/dashboard/settings",
+      icon: Settings,
     },
-  ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
+  ]
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar variant="inset" {...props}>
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+      <SidebarHeader className="bg-primary text-white">
+        <SidebarMenu className="bg-primary text-white">
+          <SidebarMenuItem className="bg-primary text-white">
+            <SidebarMenuButton size="lg" asChild className="text-white bg-primary">
+              <a href="#" className="bg-primary text-white">
+                <div className="text-white flex aspect-square bg-primary size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
                   <Command className="size-4" />
                 </div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
+                <div className="bg-primary grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">Acme Inc</span>
                   <span className="truncate text-xs">Enterprise</span>
                 </div>
@@ -169,13 +140,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-      </SidebarHeader>
-      <SidebarContent>
+      </SidebarHeader >
+      <SidebarContent className="bg-primary text-white">
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="bg-primary text-white">
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>

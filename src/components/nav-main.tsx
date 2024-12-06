@@ -34,7 +34,7 @@ export function NavMain({
   }[]
 }) {
   return (
-    <SidebarGroup>
+    <SidebarGroup >
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
@@ -57,8 +57,8 @@ export function NavMain({
                   <CollapsibleContent>
                     <SidebarMenuSub>
                       {item.items?.map((subItem) => (
-                        <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild>
+                        <SidebarMenuSubItem key={subItem.title} className="hover:bg-secondary text-white">
+                          <SidebarMenuSubButton asChild className="text-white">
                             <a href={subItem.url}>
                               <span>{subItem.title}</span>
                             </a>
