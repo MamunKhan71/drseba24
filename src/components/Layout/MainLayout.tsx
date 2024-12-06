@@ -11,7 +11,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 // import { AnimatePresence, motion } from 'framer-motion';
-import { Archive, BadgePercent, BellIcon, Briefcase, ChevronDown, ClipboardPlus, FileText, Headset, LayoutDashboard, LucideBriefcaseMedical, Moon, PlusCircle, School, Settings, User, UserCog, UserPen, UserRound, Users, Variable } from 'lucide-react';
+import { Archive, BadgePercent, BellIcon, Briefcase, Calendar, ChevronDown, ClipboardPlus, FileText, Headset, LayoutDashboard, LucideBriefcaseMedical, Moon, PlusCircle, School, Settings, User, UserCog, UserPen, UserRound, Users, Variable } from 'lucide-react';
 // import { signOut, useSession } from 'next-auth/react';
 // import Image from 'next/image';
 // import Link from 'next/link';
@@ -46,7 +46,7 @@ export default function MainLayout() {
     const [isDashboardOpen, setIsDashboardOpen] = useState<boolean>(true)
     const [isProfileOpen, setIsProfileOpen] = useState<boolean>(true)
     const rolePermissions: Record<string, string[]> = {
-        doctor: ["Overview", "Patients", "Appointments", "Prescriptions", "Personal Info", "Professional Info", "Settings", "Education"],
+        doctor: ["Overview", "Patients", "Appointments","Schedule", "Prescriptions", "Personal Info", "Professional Info", "Settings", "Education"],
         admin: ["Overview", "Patients", "Doctors", "Appointments", "Lab Tests", "Receptionist", "Add Medicine", "Prescriptions"],
         // Add more roles and their permissions here
     };
@@ -98,6 +98,7 @@ export default function MainLayout() {
     })
     const dashboardProfile: DashboardProfile[] = [
         { icon: User, name: 'Personal Info', href: '/dashboard/profile' },
+        { icon: Calendar, name: 'Schedule', href: '/dashboard/schedule' },
         // { icon: School, name: 'Education', href: '/dashboard/doctors/profile' },
         // { icon: Briefcase, name: 'Professional Info', href: '/dashboard/edit-profile' },
         // { icon: BookmarkCheck, name: 'Settings', href: '/dashboard/my-bookings' },

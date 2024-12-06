@@ -13,6 +13,7 @@ import VerifyEmailPage from "@/pages/verify/Verify";
 import { createBrowserRouter } from "react-router-dom";
 import ProfileSettings from "@/pages/dashboard/ProfileSettings";
 import Settings from "@/pages/dashboard/profile/Settings";
+import Schedule from "@/pages/dashboard/profile/schedule/Schedule";
 
 const router = createBrowserRouter([
     {
@@ -62,8 +63,13 @@ const router = createBrowserRouter([
                     {
                         path: 'profession',
                         element: <Profession />
-                    }
+                    },
+                    
                 ]
+            },
+            {
+                path: "schedule",
+                element: <Schedule />
             },
             {
                 path: 'appointments',
