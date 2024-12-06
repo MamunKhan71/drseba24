@@ -23,13 +23,22 @@ interface DaySchedule {
     day: string
     timeSlots: TimeSlot[]
 }
+interface Unavailability {
+    start: string;
+    end: string;
+    reason: string;
+}
 
 export default function DoctorSchedule() {
     const location = useLocation().pathname
     const [selectedDay, setSelectedDay] = useState(DAYS_OF_WEEK[0])
     const [isAddingUnavailability, setIsAddingUnavailability] = useState(false)
-    const [newUnavailability, setNewUnavailability] = useState({ start: "", end: "", reason: "" })
-    const [unavailabilities, setUnavailabilities] = useState([])
+    const [unavailabilities, setUnavailabilities] = useState<Unavailability[]>([]);
+    const [newUnavailability, setNewUnavailability] = useState<Unavailability>({
+        start: "",
+        end: "",
+        reason: "",
+    });
     const [schedule, setSchedule] = useState<DaySchedule[]>(
         DAYS_OF_WEEK.map(day => ({ day, timeSlots: [] }))
     )
